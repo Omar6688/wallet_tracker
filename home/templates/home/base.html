@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Wallet Tracker{% endblock %}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        header {
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        nav a {
+            margin-right: 15px;
+            text-decoration: none;
+            color: #007BFF;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Wallet Tracker 💸</h1>
+        <nav>
+            <a href="/">Home</a>
+            <!-- You can add links like Income, Expenses, Login later -->
+        </nav>
+    </header>
+
+    {% block content %}
+    <!-- Child templates will inject their content here -->
+    {% endblock %}
+</body>
+</html>
