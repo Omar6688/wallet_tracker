@@ -1,0 +1,16 @@
+# Virtual environment
+venv/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Django secret file (if used)
+.env
+
+# Database (if using SQLite locally)
+*.sqlite3
+
+# macOS and VS Code
+.DS_Store
+.vscode/
