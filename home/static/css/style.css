@@ -32,3 +32,14 @@ th, td {
     border: 1px solid #ccc;
     text-align: left;
 }
+
+/* Capitalize first letter of title field */
+input[name="title"] {
+    text-transform: capitalize !important;
+}
+
+/* Make category input all uppercase */
+input[name="category"] {
+    text-transform: uppercase !important;
+}
+

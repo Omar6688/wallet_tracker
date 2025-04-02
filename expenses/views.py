@@ -11,9 +11,12 @@ def add_expense(request):
     if request.method == 'POST':
         form = ExpenseForm(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect('expenses')  # name of the index URL
+            expense = form.save(commit=False)
+            # Modify the fields before saving to DB
+            expense.title = expense.title.capitalize()
+            expense.category = expense.category.upper()
+            expense.save()
+            return redirect('expenses')
     else:
         form = ExpenseForm()
     return render(request, 'expenses/add_expense.html', {'form': form})
-
