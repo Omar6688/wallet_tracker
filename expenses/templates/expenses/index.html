@@ -3,6 +3,30 @@
 {% block title %}Expenses - Wallet Tracker{% endblock %}
 
 {% block content %}
-    <h2>Expenses Page</h2>
-    <p>Here you'll track all your expenses.</p>
+    <h2>Your Expenses</h2>
+
+    {% if expenses %}
+        <table border="1" cellpadding="8" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Amount</th>
+                    <th>Category</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for expense in expenses %}
+                    <tr>
+                        <td>{{ expense.title }}</td>
+                        <td>${{ expense.amount }}</td>
+                        <td>{{ expense.category }}</td>
+                        <td>{{ expense.date }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No expenses recorded yet.</p>
+    {% endif %}
 {% endblock %}

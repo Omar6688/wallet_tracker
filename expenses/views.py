@@ -1,6 +1,6 @@
 from django.shortcuts import render
-
-# Create your views here.
+from .models import Expense  
 
 def index(request):
-    return render(request, 'expenses/index.html')
+    expenses = Expense.objects.all().order_by('-date')  # get all expenses
+    return render(request, 'expenses/index.html', {'expenses': expenses})  # send to template
