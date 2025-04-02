@@ -42,3 +42,11 @@ def edit_expense(request, expense_id):
     return render(request, 'expenses/edit_expense.html', {'form': form, 'expense': expense})
 
 
+def delete_expense(request, expense_id):
+    expense = get_object_or_404(Expense, pk=expense_id)
+
+    if request.method == 'POST':
+        expense.delete()
+        return redirect('expenses')
+
+    return render(request, 'expenses/delete_expense.html', {'expense': expense})

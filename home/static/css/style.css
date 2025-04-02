@@ -43,3 +43,17 @@ input[name="category"] {
     text-transform: uppercase !important;
 }
 
+/* Style for all links - clean and professional */
+a:link,
+a:visited {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+a:hover,
+a:active {
+    color: #0056b3;
+    text-decoration: none; 
+}
+
+
