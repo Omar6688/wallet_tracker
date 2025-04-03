@@ -50,3 +50,9 @@ def delete_expense(request, expense_id):
         return redirect('expenses')
 
     return render(request, 'expenses/delete_expense.html', {'expense': expense})
+
+from .models import Income
+
+def income_list(request):
+    incomes = Income.objects.all().order_by('-date')
+    return render(request, 'expenses/income_list.html', {'incomes': incomes})
