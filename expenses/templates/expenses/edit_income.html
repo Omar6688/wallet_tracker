@@ -1,0 +1,14 @@
+{% extends 'home/base.html' %}
+{% block title %}Edit Income - Wallet Tracker{% endblock %}
+
+{% block content %}
+  <h2>Edit Income</h2>
+
+  <form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save Changes</button>
+  </form>
+
+  <p><a href="{% url 'income_list' %}">← Back to Income List</a></p>
+{% endblock %}

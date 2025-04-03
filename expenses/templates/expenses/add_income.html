@@ -1,0 +1,14 @@
+{% extends 'home/base.html' %}
+{% block title %}Add Income - Wallet Tracker{% endblock %}
+
+{% block content %}
+  <h2>Add New Income</h2>
+
+  <form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Add Income</button>
+  </form>
+
+  <p><a href="{% url 'income_list' %}">← Back to Income List</a></p>
+{% endblock %}
