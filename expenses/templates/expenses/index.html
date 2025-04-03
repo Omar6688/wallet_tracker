@@ -8,6 +8,18 @@
     {% if expenses %}
         <p><strong>Total Expenses:</strong> ${{ total_expenses }}</p>
         <p><strong>Balance:</strong> ${{ balance }}</p>
+
+        <form method="get">
+            <label for="category">Filter by Category:</label>
+            <input type="text" name="category" id="category" value="{{ request.GET.category }}">
+        
+            <label for="date">Filter by Date:</label>
+            <input type="date" name="date" id="date" value="{{ request.GET.date }}">
+        
+            <button type="submit">Apply Filters</button>
+            <a href="{% url 'expenses' %}">Reset</a>
+        </form>
+        
     
         <table border="1" cellpadding="8" cellspacing="0">
             <thead>

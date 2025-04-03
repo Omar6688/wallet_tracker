@@ -6,6 +6,18 @@
 
     {% if incomes %}
          <p><strong>Total Income:</strong> ${{ total_income }}</p>
+         
+         <form method="get">
+            <label for="category">Filter by Category:</label>
+            <input type="text" name="category" id="category" value="{{ request.GET.category }}">
+        
+            <label for="date">Filter by Date:</label>
+            <input type="date" name="date" id="date" value="{{ request.GET.date }}">
+        
+            <button type="submit">Apply Filters</button>
+            <a href="{% url 'income_list' %}">Reset</a>
+        </form>
+        
          <table>
             <thead>
                 <tr>
