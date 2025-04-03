@@ -56,4 +56,16 @@ a:active {
     text-decoration: none; 
 }
 
+.messages {
+    list-style: none;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #007BFF;
+    background-color: #E7F1FF;
+    color: #0056b3;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+
 
