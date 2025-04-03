@@ -1,33 +1,48 @@
-from django.shortcuts import render, redirect
-from .models import Expense
-from .forms import IncomeForm
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.db.models import Sum
+
+from .models import Expense, Income
+from .forms import ExpenseForm, IncomeForm
 
 
+# Expenses Home Page (Index) — shows totals and balance
+@login_required
 def index(request):
-    expenses = Expense.objects.all().order_by('-date')  # get all expenses
-    return render(request, 'expenses/index.html', {'expenses': expenses})  # send to template
+    expenses = Expense.objects.filter(user=request.user).order_by('-date')
+    total_expenses = expenses.aggregate(total=Sum('amount'))['total'] or 0
+
+    total_income = Income.objects.filter(user=request.user).aggregate(total=Sum('amount'))['total'] or 0
+    balance = total_income - total_expenses
+
+    return render(request, 'expenses/index.html', {
+        'expenses': expenses,
+        'total_expenses': total_expenses,
+        'balance': balance
+    })
 
 
-from .forms import ExpenseForm  # import the form
-
+# Add Expense
+@login_required
 def add_expense(request):
     if request.method == 'POST':
         form = ExpenseForm(request.POST)
         if form.is_valid():
             expense = form.save(commit=False)
-            # Modify the fields before saving to DB
+            expense.user = request.user
             expense.title = expense.title.capitalize()
             expense.category = expense.category.upper()
             expense.save()
+            messages.success(request, 'Expense added successfully!')
             return redirect('expenses')
     else:
         form = ExpenseForm()
     return render(request, 'expenses/add_expense.html', {'form': form})
 
 
-from django.shortcuts import get_object_or_404
-
+# Edit Expense
+@login_required
 def edit_expense(request, expense_id):
     expense = get_object_or_404(Expense, pk=expense_id)
 
@@ -38,6 +53,7 @@ def edit_expense(request, expense_id):
             updated_expense.title = updated_expense.title.capitalize()
             updated_expense.category = updated_expense.category.upper()
             updated_expense.save()
+            messages.success(request, 'Expense updated successfully!')
             return redirect('expenses')
     else:
         form = ExpenseForm(instance=expense)
@@ -45,23 +61,31 @@ def edit_expense(request, expense_id):
     return render(request, 'expenses/edit_expense.html', {'form': form, 'expense': expense})
 
 
+# Delete Expense
+@login_required
 def delete_expense(request, expense_id):
     expense = get_object_or_404(Expense, pk=expense_id)
 
     if request.method == 'POST':
         expense.delete()
+        messages.success(request, 'Expense deleted successfully.')
         return redirect('expenses')
 
     return render(request, 'expenses/delete_expense.html', {'expense': expense})
 
-from .models import Income
 
+# Income List Page (with total)
+@login_required
 def income_list(request):
-    incomes = Income.objects.all().order_by('-date')
-    return render(request, 'expenses/income_list.html', {'incomes': incomes})
+    incomes = Income.objects.filter(user=request.user).order_by('-date')
+    total_income = incomes.aggregate(total=Sum('amount'))['total'] or 0
+    return render(request, 'expenses/income_list.html', {
+        'incomes': incomes,
+        'total_income': total_income
+    })
 
-from django.contrib.auth.decorators import login_required
 
+# Add Income
 @login_required
 def add_income(request):
     if request.method == 'POST':
@@ -78,8 +102,8 @@ def add_income(request):
         form = IncomeForm()
     return render(request, 'expenses/add_income.html', {'form': form})
 
-from django.shortcuts import get_object_or_404
 
+# Edit Income
 @login_required
 def edit_income(request, income_id):
     income = get_object_or_404(Income, pk=income_id)
@@ -99,11 +123,11 @@ def edit_income(request, income_id):
 
     return render(request, 'expenses/edit_income.html', {'form': form, 'income': income})
 
+
+# Delete Income
 @login_required
 def delete_income(request, income_id):
     income = get_object_or_404(Income, pk=income_id)
     income.delete()
     messages.success(request, 'Income deleted successfully.')
     return redirect('income_list')
-
-

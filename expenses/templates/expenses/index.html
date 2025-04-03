@@ -6,6 +6,9 @@
     <h2>Your Expenses</h2>
 
     {% if expenses %}
+        <p><strong>Total Expenses:</strong> ${{ total_expenses }}</p>
+        <p><strong>Balance:</strong> ${{ balance }}</p>
+    
         <table border="1" cellpadding="8" cellspacing="0">
             <thead>
                 <tr>
