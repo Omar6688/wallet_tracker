@@ -1,1 +1,2 @@
-web: gunicorn wallet_tracker.wsgi
+web: gunicorn wallet_project.wsgi
+
