@@ -1,0 +1,145 @@
+/* General Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #f7f9fc;
+}
+
+/* Header */
+header {
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+h1 {
+    color: black;
+    margin-bottom: 10px;
+}
+
+/* Navigation Bar */
+nav {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #007BFF;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #0056b3;
+    text-decoration: none;
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: white;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+th, td {
+    padding: 12px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+/* Link Actions */
+a:link,
+a:visited {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+a:hover,
+a:active {
+    color: #0056b3;
+    text-decoration: none;
+}
+
+/* Form Input Transformations */
+input[name="title"] {
+    text-transform: capitalize;
+}
+
+input[name="category"] {
+    text-transform: uppercase;
+}
+
+/* Flash Messages */
+.messages {
+    list-style: none;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #007BFF;
+    background-color: #E7F1FF;
+    color: #0056b3;
+    font-weight: bold;
+    border-radius: 5px;
+    text-align: center;
+}
+
+/* Buttons */
+button {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    body {
+        margin: 20px;
+        padding: 15px;
+    }
+
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+    th {
+        display: none;
+    }
+
+    td {
+        border: none;
+        position: relative;
+        padding-left: 50%;
+        margin-bottom: 10px;
+    }
+
+    td::before {
+        position: absolute;
+        left: 10px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        font-weight: bold;
+        color: #333;
+    }
+
+    td:nth-of-type(1)::before { content: "Title"; }
+    td:nth-of-type(2)::before { content: "Amount"; }
+    td:nth-of-type(3)::before { content: "Category"; }
+    td:nth-of-type(4)::before { content: "Date"; }
+    td:nth-of-type(5)::before { content: "Actions"; }
+}
