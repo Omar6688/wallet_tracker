@@ -427,6 +427,42 @@ The app avoids heavy use of imagery to maintain performance and speed. Instead:
 ---
 
 
+## 🛠️ Technologies Used
+
+### Languages
+- **HTML5** – For structuring the web pages
+- **CSS3** – For styling the layout and making the app responsive
+- **JavaScript** – For interactivity and dynamic user experience
+- **Python** – Main backend language used with Django
+
+### Frameworks & Libraries
+- **Django** – Backend web framework for building the application
+- **Gunicorn** – WSGI HTTP server used for deploying the app on Heroku
+- **WhiteNoise** – Used to serve static files efficiently in production
+- **jQuery** – For small DOM manipulation and dynamic behavior
+- **Bootstrap (v5)** – For responsive layout and pre-styled components (optional)
+
+### Database
+- **PostgreSQL** – Production database used on Heroku
+- **SQLite3** – Default development database (local use)
+
+### Tools & Platforms
+- **Git** – Version control
+- **GitHub** – Remote repository hosting and project board for Agile planning
+- **Heroku** – Hosting platform used for deployment
+- **VS Code** – Main IDE used for development
+- **Balsamiq** – For creating wireframes
+- **DrawSQL / dbdiagram.io** – For designing and generating ERD diagrams
+
+### Other Utilities
+- **dotenv / env.py** – Environment variable management
+- **Favicon.io** – Favicon generation tool
+- **Font Awesome** – Icon library for small interface elements
+
+> ⚙️ All dependencies are listed in `requirements.txt` and installed using `pip install -r requirements.txt`.
+
+
+
 
 
 
