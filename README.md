@@ -605,6 +605,50 @@ To run Wallet Tracker on your local machine:
    cd wallet_tracker
 
 
+---
+---
+---
+---
+
+
+## Credits
+
+- **Hero Image**  
+  The [hero image](https://www.pexels.com/photo/person-holding-us-dollar-banknotes-4386435/) used on the homepage was sourced from [Pexels](https://www.pexels.com), a free-to-use image platform.
+
+- **Wireframes**  
+  Wireframes were created using [Balsamiq](https://balsamiq.com/wireframes/desktop/#) to visually plan out the layout for mobile, tablet, and desktop views.
+
+- **Favicon**  
+  Favicon was generated using [Favicon.io](https://favicon.io/), an open-source favicon generator tool.
+
+- **Color Picker**  
+  Color palettes were refined using [Coolors.co](https://coolors.co/) for accessibility and consistent UI.
+
+- **Logo & Visual Design**  
+  Logo and any visual assets were created or adjusted using [Canva](https://www.canva.com/), a free design tool.
+
+- **Image Compression**  
+  [TinyPNG](https://tinypng.com/) was used to compress images and optimize loading performance.
+
+- **Font Icons**  
+  [Font Awesome](https://fontawesome.com/) was used for all iconography throughout the app.
+
+- **External Libraries & Tools**
+  - [Django](https://www.djangoproject.com/)
+  - [PostgreSQL](https://www.postgresql.org/)
+  - [Heroku](https://www.heroku.com/)
+  - [Gunicorn](https://gunicorn.org/)
+  - [Whitenoise](http://whitenoise.evans.io/)
+  - [dj-database-url](https://pypi.org/project/dj-database-url/)
+  - [psycopg2](https://pypi.org/project/psycopg2/)
+  - [drawSQL](https://drawsql.app/) *(optional tool for ERD)*
+
+---
+
+### Special Thanks
+
+Huge thanks to **Code Institute** for their guidance and structure throughout this project. Also, appreciation goes to the supportive Slack community and my mentor for their constructive feedback during development.
 
 
 
