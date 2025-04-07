@@ -131,7 +131,7 @@ User stories were written to capture the goals from the user’s perspective and
 
 The Wallet Tracker 💸 project was scoped to focus on delivering essential financial tracking functionality while maintaining a clean and responsive user interface. The following features were included in the current release:
 
-### Features Included
+### Features
 
 - **Homepage:** A simple welcome page that introduces the app and directs the user to log in or register.
 - **User Registration and Login:**
@@ -327,9 +327,9 @@ templates/
 ---
 
 
-## 🧱 The Skeleton Plane
+## The Skeleton Plane
 
-### 📐 Wireframes
+### Wireframes
 
 Wireframes were created before development to visualize the structure and user flow across devices. The layouts were designed for:
 
@@ -343,7 +343,7 @@ Wireframes were designed using [Balsamiq](https://balsamiq.com/), matching the f
 
 ---
 
-### 🗃️ Database Design (ERD)
+### Database Design (ERD)
 
 The Wallet Tracker app uses a PostgreSQL database with two core models:
 
@@ -367,7 +367,7 @@ All data is user-specific, ensuring security and privacy through foreign key rel
 
 ---
 
-### 🔐 Security
+### Security
 
 Security measures implemented in this app include:
 
@@ -380,9 +380,9 @@ Security measures implemented in this app include:
 ---
 
 
-## 🎨 The Surface Plane
+## The Surface Plane
 
-### 🧩 Design
+### Design
 
 The Wallet Tracker app was designed with simplicity and clarity in mind. The user interface is intuitive, clean, and responsive — ensuring a smooth experience across all screen sizes (mobile, tablet, and desktop).
 
@@ -392,7 +392,7 @@ The Wallet Tracker app was designed with simplicity and clarity in mind. The use
 
 ---
 
-### 🎨 Colour Scheme
+### Colour Scheme
 
 The app uses a professional and visually appealing color palette:
 
@@ -407,7 +407,7 @@ Color usage enhances UX without overwhelming the user.
 
 ---
 
-### ✍️ Typography
+### Typography
 
 - **Font Family**: `'Roboto', sans-serif`
 - Roboto was chosen for its modern, clean lines and readability.
@@ -415,7 +415,7 @@ Color usage enhances UX without overwhelming the user.
 
 ---
 
-### 🖼️ Imagery
+### Imagery
 
 The app avoids heavy use of imagery to maintain performance and speed. Instead:
 
@@ -427,7 +427,7 @@ The app avoids heavy use of imagery to maintain performance and speed. Instead:
 ---
 
 
-## 🛠️ Technologies Used
+## Technologies Used
 
 ### Languages
 - **HTML5** – For structuring the web pages
@@ -465,7 +465,7 @@ The app avoids heavy use of imagery to maintain performance and speed. Instead:
 ---
 
 
-## ✅ Testing
+## Testing
 
 Testing was carried out manually across different devices, screen sizes, and browsers to ensure a smooth user experience and consistent performance.
 
@@ -523,6 +523,86 @@ Although not implemented due to project time constraints, Django’s testing fra
 
 
 ---
+
+
+## Deployment
+
+### ☁️ Heroku Deployment
+
+The Wallet Tracker app was deployed using **Heroku** with **PostgreSQL** and necessary environment variables.
+
+#### 🔧 Deployment Steps
+
+1. **Create a new Heroku app**
+   - Go to [https://heroku.com](https://heroku.com)
+   - Log in and click **New > Create new app**
+   - Choose a unique app name and select the region
+
+2. **Add PostgreSQL**
+   - In the **Resources** tab, search for **Heroku Postgres**
+   - Select the **Hobby Dev** plan and click **Add**
+
+3. **Set Config Vars**
+   - Go to **Settings > Reveal Config Vars**
+   - Add the following:
+     - `DATABASE_URL` *(automatically added by Heroku)*
+     - `SECRET_KEY` *(your Django secret key)*
+     - `DEBUG` = `False`
+     - Any other environment variables required
+
+4. **Create a Procfile**
+   - In the root directory of your project, create a file named `Procfile` (no extension)
+   - Add the following line:
+     ```
+     web: gunicorn wallet_project.wsgi
+     ```
+
+5. **Requirements and Dependencies**
+   - Ensure the following are included in your `requirements.txt`:
+     ```
+     gunicorn
+     dj-database-url
+     psycopg2
+     whitenoise
+     ```
+
+6. **Update `settings.py`**
+   - Add PostgreSQL configuration:
+     ```python
+     import dj_database_url
+
+     DATABASES = {
+         'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+     }
+     ```
+   - Add WhiteNoise static file config:
+     ```python
+     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+     ```
+
+7. **Connect GitHub Repo**
+   - In the **Deploy** tab on Heroku:
+     - Connect your GitHub account
+     - Choose the repository
+     - Select the branch (usually `main`)
+     - Click **Deploy Branch**
+
+8. **Collect Static Files**
+   - Run the following from the terminal:
+     ```bash
+     heroku run python manage.py collectstatic --noinput
+     ```
+
+---
+
+### 🖥️ Run Locally
+
+To run Wallet Tracker on your local machine:
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/your-username/wallet_tracker.git
+   cd wallet_tracker
 
 
 
