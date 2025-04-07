@@ -442,7 +442,7 @@ The app avoids heavy use of imagery to maintain performance and speed. Instead:
 - **jQuery** – For small DOM manipulation and dynamic behavior
 - **Bootstrap (v5)** – For responsive layout and pre-styled components (optional)
 
-### Database
+### Databasegit 
 - **PostgreSQL** – Production database used on Heroku
 - **SQLite3** – Default development database (local use)
 
@@ -460,6 +460,72 @@ The app avoids heavy use of imagery to maintain performance and speed. Instead:
 - **Font Awesome** – Icon library for small interface elements
 
 > ⚙️ All dependencies are listed in `requirements.txt` and installed using `pip install -r requirements.txt`.
+
+
+---
+
+
+## ✅ Testing
+
+Testing was carried out manually across different devices, screen sizes, and browsers to ensure a smooth user experience and consistent performance.
+
+### 🔍 Manual Testing
+
+All major features and user flows were manually tested, including:
+
+- **User Authentication**
+  - Register, Login, Logout
+  - Invalid login attempts
+  - Form validation and redirect behavior
+
+- **Expenses & Income CRUD**
+  - Add, Edit, Delete entries
+  - Input validation (empty fields, invalid amounts, etc.)
+  - Auto-capitalization on title/category fields
+  - Success messages displayed correctly
+
+- **Navigation**
+  - Navigation links update based on authentication state
+  - Fully responsive navbar (desktop, tablet, mobile)
+  - Navigation between all main views
+
+- **Responsive Design**
+  - Tested on:
+    - macOS Chrome, Safari
+    - iPhone (Safari)
+    - Android (Chrome)
+    - iPad
+    - Windows Chrome
+
+- **Error Handling**
+  - 403 and 404 error pages rendered properly
+  - Unauthorized access to entries by other users is restricted
+
+### 🧪 Automated Testing (Optional / Future Work)
+
+Although not implemented due to project time constraints, Django’s testing framework could be used to write unit tests for:
+- Model creation
+- View permissions
+- Form validation
+- URL resolution
+
+### ❗ Known Issues
+
+- Table sorting or filtering for large datasets is not yet implemented
+- Category options are free text – potential for duplicate categories (case differences)
+
+### 📱 Accessibility
+
+- Semantic HTML5 tags used
+- Form labels included for all inputs
+- Color contrast meets WCAG AA standards
+- Keyboard navigability tested
+
+
+---
+
+
+
 
 
 
