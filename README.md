@@ -19,3 +19,34 @@ The live site can be found here: [Live Site - Wallet Tracker](https://wallet-tra
 
 
 ---
+
+
+## Table of Contents
+
+- [Wallet Tracker 💸](#wallet-tracker-💸)
+  - [User Experience Design](#user-experience-design)
+    - [The Strategy Plane](#the-strategy-plane)
+      - [Site Goals](#site-goals)
+      - [Agile Planning](#agile-planning)
+      - [User Stories](#user-stories)
+    - [The Scope Plane](#the-scope-plane)
+    - [The Structure Plane](#the-structure-plane)
+      - [Features](#features)
+      - [Features Left to Implement](#features-left-to-implement)
+    - [The Skeleton Plane](#the-skeleton-plane)
+      - [Wireframes](#wireframes)
+      - [Database Design (ERD)](#database-design-erd)
+      - [Security](#security)
+    - [The Surface Plane](#the-surface-plane)
+      - [Design](#design)
+      - [Colour Scheme](#colour-scheme)
+      - [Typography](#typography)
+      - [Imagery](#imagery)
+  - [Technologies Used](#technologies-used)
+  - [Testing](#testing)
+  - [Deployment](#deployment)
+    - [Version Control](#version-control)
+    - [Heroku Deployment](#heroku-deployment)
+    - [Run Locally](#run-locally)
+    - [Fork Project](#fork-project)
+  - [Credits](#credits)
