@@ -238,6 +238,93 @@ The Wallet Tracker project has a clear, user-friendly structure focused on intui
 - Django’s built-in `LoginView`, `LogoutView`, and `UserCreationForm` are used.
 - Login-required decorators protect sensitive routes.
 
+
 ---
+
+
+## The Structure Plane
+
+This section describes how the Wallet Tracker app is structured, including the layout, navigation, key templates, and how users interact with the features.
+
+---
+
+### Navigation
+
+The navigation bar appears consistently at the top of every page and includes links for:
+
+- **Home** – `/`
+- **Expenses** – `/expenses/`
+- **Add Expense** – `/expenses/add/`
+- **Income** – `/expenses/income/`
+- **Add Income** – `/expenses/income/add/`
+- **Login / Logout / Register** – Dynamically shown based on the user's authentication state.
+
+Mobile responsiveness is handled through custom CSS to ensure a smooth experience on all screen sizes. A collapsible hamburger-style navigation bar is implemented for smaller screens (phones and tablets).
+
+---
+
+### Page Layout and Templates
+
+The app uses Django’s template inheritance system to maintain consistent structure across all pages:
+
+- **`base.html`** – Main layout file that includes the navigation bar, footer, and block content area for child templates.
+- All other HTML files (`index.html`, `expenses.html`, `add_expense.html`, etc.) extend from `base.html`.
+
+Each template is divided into logical blocks:
+- `block title` – Defines the title for the browser tab.
+- `block content` – Injects page-specific content (form, table, messages, etc.).
+- `block scripts` (optional) – For page-specific JavaScript.
+
+---
+
+### Template Files Structure
+
+templates/
+│
+├── base.html
+├── index.html
+│
+├── expenses/
+│   ├── list.html
+│   ├── add.html
+│   ├── edit.html
+│
+└── users/
+    ├── login.html
+    ├── register.html
+
+
+### Models Overview
+
+#### Expense Model
+- `title` – Capitalized input
+- `amount`
+- `category` – Capitalized input
+- `description`
+- `date`
+- `user` – Linked to the authenticated user
+
+#### Income Model
+- Same fields and structure as the Expense model
+
+> Both models are linked to the currently logged-in user, ensuring personal financial data separation and secure access.
+
+---
+
+### Features and Functionality
+
+- Full **CRUD** support for both **Expenses** and **Income** entries.
+- Client-side enhancements:
+  - Automatic capitalization of **title** and **category** fields.
+- Success messages are shown for:
+  - Creating
+  - Editing
+  - Deleting
+- Responsive **table views** for both Income and Expenses pages.
+- **Fixed and centered layout** ensures a consistent experience across desktop, tablet, and mobile devices.
+
+
+---
+
 
 
