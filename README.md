@@ -377,6 +377,56 @@ Security measures implemented in this app include:
 - **Custom Error Pages**: User-friendly 403 and 404 pages enhance security and usability.
 
 
+---
+
+
+## 🎨 The Surface Plane
+
+### 🧩 Design
+
+The Wallet Tracker app was designed with simplicity and clarity in mind. The user interface is intuitive, clean, and responsive — ensuring a smooth experience across all screen sizes (mobile, tablet, and desktop).
+
+- Pages are centered with consistent spacing.
+- Buttons and links are visually distinct and spaced appropriately.
+- The header remains fixed and includes key navigation links.
+
+---
+
+### 🎨 Colour Scheme
+
+The app uses a professional and visually appealing color palette:
+
+| Element         | Color Code  | Purpose                              |
+|-----------------|-------------|--------------------------------------|
+| Background      | `#0a192f`   | Deep navy blue for readability       |
+| Text            | `#ffffff`   | White for strong contrast            |
+| Buttons & Timer | `#ff8800`   | Orange for call-to-action elements   |
+| Borders         | `#ffffff`   | Light contrast against dark background |
+
+Color usage enhances UX without overwhelming the user.
+
+---
+
+### ✍️ Typography
+
+- **Font Family**: `'Roboto', sans-serif`
+- Roboto was chosen for its modern, clean lines and readability.
+- Font sizes were optimized for both desktop and mobile devices.
+
+---
+
+### 🖼️ Imagery
+
+The app avoids heavy use of imagery to maintain performance and speed. Instead:
+
+- Icons are used minimally and meaningfully (e.g., 💸 in the header).
+- A favicon is included for branding and easy tab identification.
+
+> 🔧 *All assets (CSS, icons, etc.) are served from the `/static/` directory using WhiteNoise.*
+
+---
+
+
 
 
 
