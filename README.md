@@ -126,4 +126,55 @@ User stories were written to capture the goals from the user’s perspective and
 
   ---
 
-  
+
+  ## The Scope Plane
+
+The Wallet Tracker 💸 project was scoped to focus on delivering essential financial tracking functionality while maintaining a clean and responsive user interface. The following features were included in the current release:
+
+### Features Included
+
+- **Homepage:** A simple welcome page that introduces the app and directs the user to log in or register.
+- **User Registration and Login:**
+  - Secure authentication system using Django's built-in auth.
+  - Redirect users to the dashboard after login.
+- **Add Income/Expense:**
+  - Separate forms for income and expenses.
+  - Fields include title, amount, category, and date.
+  - Input validation for accurate financial data.
+- **View Transactions:**
+  - Clean tables showing all expenses and all income.
+  - Each item includes its date, category, and amount.
+- **Edit/Delete Entries:**
+  - Users can update or delete any transaction.
+  - Confirmation before deletion for safety.
+- **Responsive Layout:**
+  - Fully functional on phones, tablets, and desktop.
+  - Uses flexible containers and tables for optimal UX.
+- **Navigation Bar:**
+  - Consistent navigation across the site.
+  - Styled without underlines and with active link feedback.
+- **Summary Totals:**
+  - (Optional) Totals for income, expenses, and balance visible to the user.
+- **Custom Error Pages:**
+  - Friendly 404 and 403 pages to guide users.
+
+---
+
+### Features Left to Implement
+
+These features were considered out-of-scope for this version but may be added in a future update:
+
+- **Monthly/Yearly Report Breakdown**
+  - Graphs/charts to visualize spending and earning trends.
+- **Category Filtering and Search**
+  - Allow users to filter transactions by category or date range.
+- **User Profile Page**
+  - Add user settings and profile customization.
+- **Export Data**
+  - Option to export income/expenses to CSV or PDF.
+- **Dark Mode UI Toggle**
+  - Allow users to switch between light and dark themes.
+
+
+---
+
