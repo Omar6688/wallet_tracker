@@ -327,4 +327,56 @@ templates/
 ---
 
 
+## 🧱 The Skeleton Plane
+
+### 📐 Wireframes
+
+Wireframes were created before development to visualize the structure and user flow across devices. The layouts were designed for:
+
+- **Mobile view (320px+)**
+- **Tablet view (768px+)**
+- **Desktop view (1024px+)**
+
+Wireframes were designed using [Balsamiq](https://balsamiq.com/), matching the final implemented layout.
+
+> 📸 *[Insert wireframe screenshots here once available]*
+
+---
+
+### 🗃️ Database Design (ERD)
+
+The Wallet Tracker app uses a PostgreSQL database with two core models:
+
+#### **Expense**
+- `title`: CharField – auto-capitalized
+- `amount`: DecimalField
+- `category`: CharField – auto-capitalized
+- `description`: TextField
+- `date`: DateField
+- `user`: ForeignKey to the `User` model
+
+#### **Income**
+- Same fields and structure as the `Expense` model
+- Linked to the logged-in user
+
+All data is user-specific, ensuring security and privacy through foreign key relationships.
+
+> 🗺️ *Entity Relationship Diagram (ERD) created using [drawSQL](https://drawsql.app/) or [DBDiagram](https://dbdiagram.io/).*
+
+> 📸 *[Insert ERD image or markdown link here]*
+
+---
+
+### 🔐 Security
+
+Security measures implemented in this app include:
+
+- **User Authentication**: Only authenticated users can access financial data.
+- **Model-Level Protection**: Income and Expense objects are filtered per user.
+- **Environment Variables**: Sensitive information is hidden in `env.py` locally and configured via Heroku Config Vars in production.
+- **Custom Error Pages**: User-friendly 403 and 404 pages enhance security and usability.
+
+
+
+
 
