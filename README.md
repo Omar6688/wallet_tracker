@@ -178,3 +178,66 @@ These features were considered out-of-scope for this version but may be added in
 
 ---
 
+
+## The Structure Plane
+
+The Wallet Tracker project has a clear, user-friendly structure focused on intuitive navigation and interaction. The goal is to guide users through their personal finance management tasks as efficiently as possible.
+
+### Features and Logic Overview
+
+#### 🔹 Navigation
+- A fixed navigation bar is accessible from all pages.
+- Provides links to: Home, Expenses, Add Expense, Income, Add Income.
+- Adjusts dynamically based on user authentication state (Login/Logout/Register).
+
+#### 🔹 Homepage (home app)
+- Welcomes the user with the project name and an introduction.
+- Encourages login/registration to access financial tools.
+
+#### 🔹 Income and Expenses Pages (expenses app)
+- Displayed as styled tables with clear column headers.
+- Table rows include:
+  - **Title** (capitalized),
+  - **Category** (capitalized),
+  - **Amount** (formatted),
+  - **Date** (formatted),
+  - **Edit** and **Delete** options with intuitive links.
+- Income and Expenses are separated in two different views/templates.
+
+#### 🔹 Add/Edit Forms
+- Two views for adding Income and Expense entries.
+- Each form includes: Title, Category, Amount, and Date fields.
+- Validation is built into Django forms to ensure data accuracy.
+- Users receive feedback upon submitting or updating entries.
+
+#### 🔹 Edit/Delete Functionality
+- Users can modify any entry through a pre-populated form.
+- Deletion requires confirmation and redirects back to the list.
+- Secured with authentication to prevent unauthorized access.
+
+#### 🔹 Templates and Base Layout
+- Uses a `base.html` template with consistent header, messages, and styling.
+- All pages extend this base to maintain visual consistency.
+- Templates are organized within their respective app folders (`templates/home`, `templates/expenses`, `templates/users`).
+
+---
+
+### Backend Structure
+
+#### Models
+- **Transaction Model** (expenses app):
+  - Shared model for both income and expense.
+  - Fields: title, amount, category, date, and user (ForeignKey).
+
+#### Views
+- Class-based and function-based views used.
+- Django messages provide real-time feedback for actions.
+- Views are separated for each action (list, create, edit, delete).
+
+#### Authentication
+- Django’s built-in `LoginView`, `LogoutView`, and `UserCreationForm` are used.
+- Login-required decorators protect sensitive routes.
+
+---
+
+
