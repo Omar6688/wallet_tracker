@@ -129,7 +129,8 @@ Tested on the following devices:
 ### HTML
 
 - All templates were tested using [W3C Validator](https://validator.w3.org/)
-- Minor warnings (e.g., placeholder ARIA labels), no critical errors
+
+- All templates were tested using the W3C Markup Validator by copying the rendered HTML from the browser (after Django template rendering). All pages passed with no critical errors. Minor template syntax like `{% static %}` was excluded from validation.
 
 ### CSS
 
