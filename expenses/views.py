@@ -57,25 +57,36 @@ def add_expense(request):
 def edit_expense(request, expense_id):
     expense = get_object_or_404(Expense, pk=expense_id)
 
-    if request.method == 'POST':
-        form = ExpenseForm(request.POST, instance=expense)
-        if form.is_valid():
-            updated_expense = form.save(commit=False)
-            updated_expense.title = updated_expense.title.capitalize()
-            updated_expense.category = updated_expense.category.upper()
-            updated_expense.save()
-            messages.success(request, 'Expense updated successfully!')
-            return redirect('expenses')
-    else:
-        form = ExpenseForm(instance=expense)
+    if expense.user != request.user:
+        messages.error(
+            request, 
+            'Error, you are unauthorised to edit this recipe'
+        )
+        return redirect(reverse('home'))
+    else: 
+        if request.method == 'POST':
+            form = ExpenseForm(request.POST, instance=expense)
+            if form.is_valid():
+                updated_expense = form.save(commit=False)
+                updated_expense.title = updated_expense.title.capitalize()
+                updated_expense.category = updated_expense.category.upper()
+                updated_expense.save()
+                messages.success(request, 'Expense updated successfully!')
+                return redirect('expenses')
+        else:
+            form = ExpenseForm(instance=expense)
 
-    return render(request, 'expenses/edit_expense.html', {'form': form, 'expense': expense})
+        return render(request, 'expenses/edit_expense.html', {'form': form, 'expense': expense})
 
 
 # Delete Expense
 @login_required
 def delete_expense(request, expense_id):
     expense = get_object_or_404(Expense, pk=expense_id)
+
+    if expense.user != request.user:
+        messages.error(request, 'You are not authorized to delete this expense.')
+        return redirect('home')
 
     if request.method == 'POST':
         expense.delete()
@@ -132,26 +143,41 @@ def add_income(request):
 def edit_income(request, income_id):
     income = get_object_or_404(Income, pk=income_id)
 
-    if request.method == 'POST':
-        form = IncomeForm(request.POST, instance=income)
-        if form.is_valid():
-            updated_income = form.save(commit=False)
-            updated_income.user = request.user
-            updated_income.title = updated_income.title.capitalize()
-            updated_income.category = updated_income.category.upper()
-            updated_income.save()
-            messages.success(request, 'Income updated successfully!')
-            return redirect('income_list')
+    if income.user != request.user:
+        messages.error(
+            request, 
+            'Error, you are unauthorised to edit this recipe'
+        )
+        return redirect(reverse('home'))
     else:
-        form = IncomeForm(instance=income)
+        if request.method == 'POST':
+            form = IncomeForm(request.POST, instance=income)
+            if form.is_valid():
+                updated_income = form.save(commit=False)
+                updated_income.user = request.user
+                updated_income.title = updated_income.title.capitalize()
+                updated_income.category = updated_income.category.upper()
+                updated_income.save()
+                messages.success(request, 'Income updated successfully!')
+                return redirect('income_list')
+        else:
+            form = IncomeForm(instance=income)
 
-    return render(request, 'expenses/edit_income.html', {'form': form, 'income': income})
+        return render(request, 'expenses/edit_income.html', {'form': form, 'income': income})
 
 
 # Delete Income
 @login_required
 def delete_income(request, income_id):
     income = get_object_or_404(Income, pk=income_id)
-    income.delete()
-    messages.success(request, 'Income deleted successfully.')
-    return redirect('income_list')
+
+    if income.user != request.user:
+        messages.error(request, 'You are not authorized to delete this income.')
+        return redirect('home')
+
+    if request.method == 'POST':
+        income.delete()
+        messages.success(request, 'Income deleted successfully.')
+        return redirect('income_list')
+
+    return render(request, 'expenses/delete_income.html', {'income': income})
