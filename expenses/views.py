@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.db.models import Sum
+from django.core.exceptions import PermissionDenied
+
 
 from .models import Expense, Income
 from .forms import ExpenseForm, IncomeForm
@@ -58,25 +60,21 @@ def edit_expense(request, expense_id):
     expense = get_object_or_404(Expense, pk=expense_id)
 
     if expense.user != request.user:
-        messages.error(
-            request, 
-            'Error, you are unauthorised to edit this recipe'
-        )
-        return redirect(reverse('home'))
-    else: 
-        if request.method == 'POST':
-            form = ExpenseForm(request.POST, instance=expense)
-            if form.is_valid():
-                updated_expense = form.save(commit=False)
-                updated_expense.title = updated_expense.title.capitalize()
-                updated_expense.category = updated_expense.category.upper()
-                updated_expense.save()
-                messages.success(request, 'Expense updated successfully!')
-                return redirect('expenses')
-        else:
-            form = ExpenseForm(instance=expense)
+        raise PermissionDenied
 
-        return render(request, 'expenses/edit_expense.html', {'form': form, 'expense': expense})
+    if request.method == 'POST':
+        form = ExpenseForm(request.POST, instance=expense)
+        if form.is_valid():
+            updated_expense = form.save(commit=False)
+            updated_expense.title = updated_expense.title.capitalize()
+            updated_expense.category = updated_expense.category.upper()
+            updated_expense.save()
+            messages.success(request, 'Expense updated successfully!')
+            return redirect('expenses')
+    else:
+        form = ExpenseForm(instance=expense)
+
+    return render(request, 'expenses/edit_expense.html', {'form': form, 'expense': expense})
 
 
 # Delete Expense
@@ -85,8 +83,7 @@ def delete_expense(request, expense_id):
     expense = get_object_or_404(Expense, pk=expense_id)
 
     if expense.user != request.user:
-        messages.error(request, 'You are not authorized to delete this expense.')
-        return redirect('home')
+        raise PermissionDenied
 
     if request.method == 'POST':
         expense.delete()
@@ -144,36 +141,32 @@ def edit_income(request, income_id):
     income = get_object_or_404(Income, pk=income_id)
 
     if income.user != request.user:
-        messages.error(
-            request, 
-            'Error, you are unauthorised to edit this recipe'
-        )
-        return redirect(reverse('home'))
-    else:
-        if request.method == 'POST':
-            form = IncomeForm(request.POST, instance=income)
-            if form.is_valid():
-                updated_income = form.save(commit=False)
-                updated_income.user = request.user
-                updated_income.title = updated_income.title.capitalize()
-                updated_income.category = updated_income.category.upper()
-                updated_income.save()
-                messages.success(request, 'Income updated successfully!')
-                return redirect('income_list')
-        else:
-            form = IncomeForm(instance=income)
+        raise PermissionDenied
 
-        return render(request, 'expenses/edit_income.html', {'form': form, 'income': income})
+    if request.method == 'POST':
+        form = IncomeForm(request.POST, instance=income)
+        if form.is_valid():
+            updated_income = form.save(commit=False)
+            updated_income.user = request.user
+            updated_income.title = updated_income.title.capitalize()
+            updated_income.category = updated_income.category.upper()
+            updated_income.save()
+            messages.success(request, 'Income updated successfully!')
+            return redirect('income_list')
+    else:
+        form = IncomeForm(instance=income)
+
+    return render(request, 'expenses/edit_income.html', {'form': form, 'income': income})
 
 
 # Delete Income
+@login_required
 @login_required
 def delete_income(request, income_id):
     income = get_object_or_404(Income, pk=income_id)
 
     if income.user != request.user:
-        messages.error(request, 'You are not authorized to delete this income.')
-        return redirect('home')
+        raise PermissionDenied
 
     if request.method == 'POST':
         income.delete()
