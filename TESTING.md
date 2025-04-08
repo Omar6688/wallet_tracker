@@ -175,11 +175,23 @@ Tested successfully on:
 
 ## Screenshots (Optional)
 
-You may add screenshots here of:
-- Mobile view
-- Confirmation pages
-- Error pages (403, 404)
-- Validation messages
+## Screenshots
+
+### Delete Income Confirmation
+![Delete Income Confirmation](docs/testing_screens/delete_income.png)
+
+### 403 Forbidden Page
+![403 Error](docs/testing_screens/error_403.png)
+
+### 404 Page Not Found
+![404 Error](docs/testing_screens/error_404.png)
+
+### Validation Error
+![Validation Error](docs/testing_screens/validation_error.png)
+
+### Mobile Responsive View
+![Mobile View - Expenses](docs/testing_screens/mobile_expense_list.png)
+
 
 Example:
 
