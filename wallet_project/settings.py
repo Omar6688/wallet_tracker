@@ -143,3 +143,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 LOGIN_URL = '/users/login/'
+
+# Custom error handlers
+handler404 = 'home.views.error_404'
+handler403 = 'home.views.error_403'
+handler500 = 'home.views.error_500'
