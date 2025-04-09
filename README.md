@@ -30,9 +30,12 @@ The live site can be found here: [Live Site - Wallet Tracker](https://wallet-tra
       - [Agile Planning](#agile-planning)
       - [User Stories](#user-stories)
     - [The Scope Plane](#the-scope-plane)
-    - [The Structure Plane](#the-structure-plane)
       - [Features](#features)
       - [Features Left to Implement](#features-left-to-implement)
+    - [The Structure Plane](#the-structure-plane)
+      - [Features and Logic Overview](#Features-and-Logic-Overview)  
+      - [Backend Structure](#backend-structure)
+      -[Features and Functionality](#features-and-functionality)
     - [The Skeleton Plane](#the-skeleton-plane)
       - [Wireframes](#wireframes)
       - [Database Design (ERD)](#database-design-erd)
@@ -81,7 +84,7 @@ Agile methodology was used throughout the development of this project using GitH
 
 User stories were written to capture the goals from the user’s perspective and each included clear **Acceptance Criteria** to define when a task is complete. These user stories can be viewed on the [Wallet Tracker GitHub Project Board](https://github.com/users/Omar6688/projects/6).
 
-#### User Stories
+### User Stories
 
 - **Story 1: Register an account**
   - *As a new user I can to create an account so that I can log in and track my income and expenses.*
@@ -127,11 +130,11 @@ User stories were written to capture the goals from the user’s perspective and
   ---
 
 
-  ## The Scope Plane
+## The Scope Plane
 
 The Wallet Tracker 💸 project was scoped to focus on delivering essential financial tracking functionality while maintaining a clean and responsive user interface. The following features were included in the current release:
 
-### Features
+  ### Features
 
 - **Homepage:** A simple welcome page that introduces the app and directs the user to log in or register.
 - **User Registration and Login:**
@@ -158,9 +161,8 @@ The Wallet Tracker 💸 project was scoped to focus on delivering essential fina
 - **Custom Error Pages:**
   - Friendly 404 and 403 pages to guide users.
 
----
 
-### Features Left to Implement
+  ### Features Left to Implement
 
 These features were considered out-of-scope for this version but may be added in a future update:
 
@@ -185,16 +187,16 @@ The Wallet Tracker project has a clear, user-friendly structure focused on intui
 
 ### Features and Logic Overview
 
-#### 🔹 Navigation
+#### Navigation
 - A fixed navigation bar is accessible from all pages.
 - Provides links to: Home, Expenses, Add Expense, Income, Add Income.
 - Adjusts dynamically based on user authentication state (Login/Logout/Register).
 
-#### 🔹 Homepage (home app)
+#### Homepage (home app)
 - Welcomes the user with the project name and an introduction.
 - Encourages login/registration to access financial tools.
 
-#### 🔹 Income and Expenses Pages (expenses app)
+#### Income and Expenses Pages (expenses app)
 - Displayed as styled tables with clear column headers.
 - Table rows include:
   - **Title** (capitalized),
@@ -204,23 +206,44 @@ The Wallet Tracker project has a clear, user-friendly structure focused on intui
   - **Edit** and **Delete** options with intuitive links.
 - Income and Expenses are separated in two different views/templates.
 
-#### 🔹 Add/Edit Forms
+#### Add/Edit Forms
 - Two views for adding Income and Expense entries.
 - Each form includes: Title, Category, Amount, and Date fields.
 - Validation is built into Django forms to ensure data accuracy.
 - Users receive feedback upon submitting or updating entries.
 
-#### 🔹 Edit/Delete Functionality
+#### Edit/Delete Functionality
 - Users can modify any entry through a pre-populated form.
 - Deletion requires confirmation and redirects back to the list.
 - Secured with authentication to prevent unauthorized access.
 
-#### 🔹 Templates and Base Layout
+#### Templates and Base Layout
 - Uses a `base.html` template with consistent header, messages, and styling.
 - All pages extend this base to maintain visual consistency.
 - Templates are organized within their respective app folders (`templates/home`, `templates/expenses`, `templates/users`).
 
----
+#### Views and Functionality
+- Django views handle each page's logic and rendering.
+- Views are protected with @login_required decorators to ensure user privacy.
+- Django messages give real-time user feedback (e.g., success after form submission).
+- Each key function (Add, Edit, Delete) has its own view.
+
+#### Models Overview
+- Expense and Income models have the same structure:
+  - **title**: CharField (capitalized)
+  - **amount**: DecimalField
+  - **category**: CharField (capitalized)
+  - **description**: TextField
+  - **date**: DateField
+  - **user**: ForeignKey (linked to the logged-in user)
+-This ensures all financial data is user-specific and securely stored.
+
+#### Core Features at a Glance
+- Full CRUD for income and expenses.
+- Real-time total balance and filtered views.
+- Input validation and automatic formatting (capitalization).
+- Feedback messages for every user action (e.g., add/edit/delete).
+- Fully responsive layout using flexbox and percentage widths.
 
 ### Backend Structure
 
@@ -238,78 +261,6 @@ The Wallet Tracker project has a clear, user-friendly structure focused on intui
 - Django’s built-in `LoginView`, `LogoutView`, and `UserCreationForm` are used.
 - Login-required decorators protect sensitive routes.
 
-
----
-
-
-## The Structure Plane
-
-This section describes how the Wallet Tracker app is structured, including the layout, navigation, key templates, and how users interact with the features.
-
----
-
-### Navigation
-
-The navigation bar appears consistently at the top of every page and includes links for:
-
-- **Home** – `/`
-- **Expenses** – `/expenses/`
-- **Add Expense** – `/expenses/add/`
-- **Income** – `/expenses/income/`
-- **Add Income** – `/expenses/income/add/`
-- **Login / Logout / Register** – Dynamically shown based on the user's authentication state.
-
-Mobile responsiveness is handled through custom CSS to ensure a smooth experience on all screen sizes. A collapsible hamburger-style navigation bar is implemented for smaller screens (phones and tablets).
-
----
-
-### Page Layout and Templates
-
-The app uses Django’s template inheritance system to maintain consistent structure across all pages:
-
-- **`base.html`** – Main layout file that includes the navigation bar, footer, and block content area for child templates.
-- All other HTML files (`index.html`, `expenses.html`, `add_expense.html`, etc.) extend from `base.html`.
-
-Each template is divided into logical blocks:
-- `block title` – Defines the title for the browser tab.
-- `block content` – Injects page-specific content (form, table, messages, etc.).
-- `block scripts` (optional) – For page-specific JavaScript.
-
----
-
-### Template Files Structure
-
-templates/
-│
-├── base.html
-├── index.html
-│
-├── expenses/
-│   ├── list.html
-│   ├── add.html
-│   ├── edit.html
-│
-└── users/
-    ├── login.html
-    ├── register.html
-
-
-### Models Overview
-
-#### Expense Model
-- `title` – Capitalized input
-- `amount`
-- `category` – Capitalized input
-- `description`
-- `date`
-- `user` – Linked to the authenticated user
-
-#### Income Model
-- Same fields and structure as the Expense model
-
-> Both models are linked to the currently logged-in user, ensuring personal financial data separation and secure access.
-
----
 
 ### Features and Functionality
 
@@ -331,17 +282,20 @@ templates/
 
 ### Wireframes
 
+
 Wireframes were created before development to visualize the structure and user flow across devices. The layouts were designed for:
 
-- **Mobile view (320px+)**
-- **Tablet view (768px+)**
-- **Desktop view (1024px+)**
+- Mobile view (320px+)
+- Tablet view (768px+)
+- Desktop view (1024px+)
 
-Wireframes were designed using [Balsamiq](https://balsamiq.com/), matching the final implemented layout.
+The mockups were created using a Balsamiq-style layout and match the final UI closely, showing the header, navigation, and content containers.
 
-> 📸 *[Insert wireframe screenshots here once available]*
+📸 Below is a combined wireframe image representing all three screen sizes:
 
----
+![Wireframe Preview](docs/readme_images/wireframes_mockup.png)
+
+
 
 ### Database Design (ERD)
 
@@ -361,11 +315,26 @@ The Wallet Tracker app uses a PostgreSQL database with two core models:
 
 All data is user-specific, ensuring security and privacy through foreign key relationships.
 
-> 🗺️ *Entity Relationship Diagram (ERD) created using [drawSQL](https://drawsql.app/) or [DBDiagram](https://dbdiagram.io/).*
+> 🗺️ *Entity Relationship Diagram (ERD) created using [DBDiagram](https://dbdiagram.io/).*
 
-> 📸 *[Insert ERD image or markdown link here]*
+| Model   | Field        | Type         | Notes                          |
+|---------|--------------|--------------|--------------------------------|
+| Expense | title        | CharField    | Capitalized, required          |
+|         | amount       | DecimalField | Positive value only            |
+|         | category     | CharField    | Uppercase, required            |
+|         | description  | TextField    | Optional description           |
+|         | date         | DateField    | Defaults to current date       |
+|         | user         | ForeignKey   | Linked to Django User model    |
+| Income  | title        | CharField    | Same as above                  |
+|         | amount       | DecimalField | Same as above                  |
+|         | category     | CharField    | Same as above                  |
+|         | description  | TextField    | Same as above                  |
+|         | date         | DateField    | Same as above                  |
+|         | user         | ForeignKey   | Same as above                  |
 
----
+
+> ![ERD Diagram](docs/readme_images/erd_diagram.png)
+
 
 ### Security
 
@@ -390,7 +359,6 @@ The Wallet Tracker app was designed with simplicity and clarity in mind. The use
 - Buttons and links are visually distinct and spaced appropriately.
 - The header remains fixed and includes key navigation links.
 
----
 
 ### Colour Scheme
 
@@ -405,7 +373,6 @@ The app uses a professional and visually appealing color palette:
 
 Color usage enhances UX without overwhelming the user.
 
----
 
 ### Typography
 
@@ -413,7 +380,6 @@ Color usage enhances UX without overwhelming the user.
 - Roboto was chosen for its modern, clean lines and readability.
 - Font sizes were optimized for both desktop and mobile devices.
 
----
 
 ### Imagery
 
@@ -423,6 +389,7 @@ The app avoids heavy use of imagery to maintain performance and speed. Instead:
 - A favicon is included for branding and easy tab identification.
 
 > 🔧 *All assets (CSS, icons, etc.) are served from the `/static/` directory using WhiteNoise.*
+
 
 ---
 
@@ -465,7 +432,7 @@ The app avoids heavy use of imagery to maintain performance and speed. Instead:
 ---
 
 
-## Testing
+### Testing
 
 For full testing documentation, see: [TESTING.md](TESTING.md)
 
@@ -557,33 +524,31 @@ The Wallet Tracker app was deployed using **Heroku** with **PostgreSQL** and nec
      heroku run python manage.py collectstatic --noinput
      ```
 
----
 
-### ✅ Live App
 
 The project is live and can be accessed here:  
 🔗 [https://wallet-tracker-7acecdc627f5.herokuapp.com](https://wallet-tracker-7acecdc627f5.herokuapp.com)
 
----
 
-## Run Locally
+
+### Run Locally
 
 To run the Wallet Tracker project on your own machine:
 
-### 1. Clone the Repository
+1. **Clone the Repository**
 
 ```bash
 git clone https://github.com/Omar6688/wallet_tracker.git
 cd wallet_tracker
 ```
 
-### 2. Install Dependencies
+2. **Install Dependencies**
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 3. Create a `.env` File
+3. **Create a `.env` File**
 
 Add the following environment variables in the root directory:
 
@@ -592,21 +557,20 @@ SECRET_KEY=your_local_secret_key
 DEBUG=True
 ```
 
-### 4. Run Migrations and Start the Server
+4. **Run Migrations and Start the Server**
 
 ```bash
 python manage.py migrate
 python manage.py runserver
 ```
 
+
 #### Then visit: 
 [http://127.0.0.1:800](http://127.0.0.1:8000)
 
 
----
 
-
-## Fork Project
+### Fork Project
 
 If you’d like to contribute or build your own version of this project:
 
