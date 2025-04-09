@@ -1,6 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
+from django.contrib.auth.views import LoginView
+from django.contrib.auth import logout
+
 
 def register(request):
     if request.method == 'POST':
@@ -14,18 +17,13 @@ def register(request):
         form = UserCreationForm()
     return render(request, 'users/register.html', {'form': form})
 
-from django.contrib.auth.views import LoginView
-from django.contrib import messages
 
 class CustomLoginView(LoginView):
     def form_valid(self, form):
-        username = form.cleaned_data.get('username')  
+        username = form.cleaned_data.get('username')
         messages.success(self.request, f"Welcome back, {username}!")
         return super().form_valid(form)
 
-
-from django.contrib.auth import logout
-from django.shortcuts import redirect
 
 def logout_view(request):
     logout(request)

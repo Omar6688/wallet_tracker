@@ -140,7 +140,31 @@ Tested on the following devices:
 ### Python (PEP8)
 
 - All `.py` files validated using `flake8`
-- ✅ No style violations remaining after cleanup
+- #### `flake8` Linting Results
+
+We ran `flake8` across all files to ensure that our code adhered to Python’s style guidelines (PEP 8). This helps maintain consistency and readability throughout the project. Below are the steps and issues addressed:
+
+1. **Initial Flake8 Run**: We ran `flake8` across the entire project, identifying various issues such as:
+   - Missing blank lines between methods and classes.
+   - Trailing whitespace on several lines.
+   - Redundant imports that were not used in the files.
+   - Lines that exceeded the maximum allowed length (120 characters).
+
+2. **Issues Fixed**:
+   - Fixed blank line issues by ensuring that there are 2 blank lines where required.
+   - Removed unnecessary imports such as unused `env` and `auth_views`.
+   - Trimmed trailing whitespaces from lines where needed.
+   - Split long lines exceeding 120 characters.
+
+3. **Decisions Made**:
+   - We decided to keep a specific error for unused `env` imports in `manage.py` and `wsgi.py` because it's safe to leave it there, and it doesn't impact the functionality.
+   - There are still minor warnings related to missing newlines at the end of some files, but these do not affect the functionality of the project.
+
+4. **Remaining Issues**:
+   - There is a long line in `env.py` that exceeds the 120-character limit, as shown in the screenshot below. We have left it as is because it doesn't affect functionality but may be adjusted later.
+   - The `env` import in `manage.py` is still unused, which is flagged as an issue by `flake8`. This warning is also noted for future attention.
+
+5. **Flake8 Results**: After addressing all critical issues, running `flake8` showed no errors and minimal warnings. The project is now PEP 8 compliant and well-organized.
 
 ---
 
@@ -166,15 +190,15 @@ Tested successfully on:
 - Firefox (macOS)
 - Microsoft Edge (Windows)
 
+
 ### Accessibility
 
-- Forms and buttons tested with keyboard navigation
-- Color contrast checked (orange on dark blue passes WCAG AA)
-- ARIA labels used where applicable
+- All forms and buttons tested with keyboard navigation
+- Color contrast reviewed — white text on dark background is readable
+- All interactive elements are accessible by tabbing
 
 ---
 
-## Screenshots (Optional)
 
 ## Screenshots
 
@@ -193,8 +217,7 @@ Tested successfully on:
 ### Mobile Responsive View
 ![Mobile View - Expenses](docs/testing_screens/mobile_expense_list.png)
 
+### Python (PEP8) `flake8`
+![Mobile View - Expenses](docs/testing_screens/flake8.png)
 
-Example:
 
-```markdown
-![Delete Confirmation - Expense](docs/testing_screens/delete_expense.png)

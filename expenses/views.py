@@ -35,7 +35,6 @@ def index(request):
     })
 
 
-
 # Add Expense
 @login_required
 def add_expense(request):
@@ -114,7 +113,6 @@ def income_list(request):
         'incomes': incomes,
         'total_income': total_income,
     })
-
 
 
 # Add Income

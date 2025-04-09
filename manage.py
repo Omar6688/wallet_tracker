@@ -2,9 +2,10 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
+
+# Only import env if env.py exists
 if os.path.exists("env.py"):
     import env
-
 
 
 def main():
