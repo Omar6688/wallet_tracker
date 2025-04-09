@@ -79,7 +79,7 @@ The app also focuses on a clean, accessible user interface and fully responsive 
 
 Agile methodology was used throughout the development of this project using GitHub Projects. Each user story was planned and executed in small, manageable tasks to ensure continuous progress.
 
-User stories were written to capture the goals from the user’s perspective and each included clear **Acceptance Criteria** to define when a task is complete. These user stories can be viewed on the [Wallet Tracker GitHub Project Board](https://github.com/USERNAME/wallet_tracker/projects/1).
+User stories were written to capture the goals from the user’s perspective and each included clear **Acceptance Criteria** to define when a task is complete. These user stories can be viewed on the [Wallet Tracker GitHub Project Board](https://github.com/users/Omar6688/projects/6).
 
 #### User Stories
 
@@ -475,14 +475,29 @@ For full testing documentation, see: [TESTING.md](TESTING.md)
 
 ## Deployment
 
-### ☁️ Heroku Deployment
+
+### Version Control
+Version control was managed using Git and GitHub. The project was developed in Visual Studio Code and pushed to a GitHub repository using the following commands:
+
+
+
+```bash
+git add .
+git commit -m "Your commit message"
+git push origin main
+```
+
+[GitHub Repository](https://github.com/Omar6688/wallet_tracker)
+
+
+### Heroku Deployment
 
 The Wallet Tracker app was deployed using **Heroku** with **PostgreSQL** and necessary environment variables.
 
-#### 🔧 Deployment Steps
+#### Deployment Steps
 
 1. **Create a new Heroku app**
-   - Go to [https://heroku.com](https://heroku.com)
+   - Go to [http://heroku.com](https://heroku.com)
    - Log in and click **New > Create new app**
    - Choose a unique app name and select the region
 
@@ -538,25 +553,75 @@ The Wallet Tracker app was deployed using **Heroku** with **PostgreSQL** and nec
 8. **Collect Static Files**
    - Run the following from the terminal:
      ```bash
+     heroku run pyhthon manage.py migrate
      heroku run python manage.py collectstatic --noinput
      ```
 
 ---
 
-### 🖥️ Run Locally
+### ✅ Live App
 
-To run Wallet Tracker on your local machine:
+The project is live and can be accessed here:  
+🔗 [https://wallet-tracker-7acecdc627f5.herokuapp.com](https://wallet-tracker-7acecdc627f5.herokuapp.com)
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/your-username/wallet_tracker.git
-   cd wallet_tracker
+---
+
+## Run Locally
+
+To run the Wallet Tracker project on your own machine:
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/Omar6688/wallet_tracker.git
+cd wallet_tracker
+```
+
+### 2. Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 3. Create a `.env` File
+
+Add the following environment variables in the root directory:
+
+```env
+SECRET_KEY=your_local_secret_key
+DEBUG=True
+```
+
+### 4. Run Migrations and Start the Server
+
+```bash
+python manage.py migrate
+python manage.py runserver
+```
+
+#### Then visit: 
+[http://127.0.0.1:800](http://127.0.0.1:8000)
 
 
 ---
+
+
+## Fork Project
+
+If you’d like to contribute or build your own version of this project:
+
+- Visit the repo: [https://github.com/Omar6688/wallet_tracker](https://github.com/Omar6688/wallet_tracker)
+- Click the **Fork** button (top-right corner)
+- Clone your forked repo to your machine and start development:
+
+```bash
+git clone https://github.com/YOUR-USERNAME/wallet_tracker.git
+cd wallet_tracker
+```
+
+
 ---
----
----
+
 
 
 ## Credits
@@ -591,16 +656,16 @@ To run Wallet Tracker on your local machine:
   - [dj-database-url](https://pypi.org/project/dj-database-url/)
   - [psycopg2](https://pypi.org/project/psycopg2/)
   - [drawSQL](https://drawsql.app/) *(optional tool for ERD)*
+  - [ChatGpt-AI](https://chatgpt.com)
 
 ---
 
 ### Special Thanks
 
-Huge thanks to **Code Institute** for their guidance and structure throughout this project. Also, appreciation goes to the supportive Slack community and my mentor for their constructive feedback during development.
+- A huge thank you to my mentor Gareth for his insightful feedback, encouragement, and ongoing support throughout this project.
 
+- Sincere thanks to **Code Institute** for providing a structured and engaging learning experience.
 
-
-
-
+- Deep appreciation to the Slack community for their quick answers and motivation.
 
 
