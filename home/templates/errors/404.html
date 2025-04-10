@@ -1,8 +1,9 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% block content %}
-  <div class="container text-center mt-5">
-    <h1 class="display-4">404 - Page Not Found</h1>
-    <p class="lead">Sorry, the page you're looking for doesn't exist.</p>
-    <a href="{% url 'home' %}" class="btn btn-warning mt-3">Go Back Home</a>
-  </div>
+<div class="error-container">
+    <h1>404 - Page Not Found 🔍</h1>
+    <p>The page you're looking for doesn't exist.</p>
+    <a href="/">Back to Home</a>
+</div>
 {% endblock %}
+
