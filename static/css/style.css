@@ -145,7 +145,7 @@ button:hover {
 }
 
 .footer {
-    background-color: #00072D;
+    background-color: #0077b5;
     color: white;
     text-align: center;
     padding: 10px 0;
@@ -169,7 +169,7 @@ button:hover {
   }
   
   .social-links a:hover {
-    color: #007BFF;
+    color: orangered;
   }  
   
   

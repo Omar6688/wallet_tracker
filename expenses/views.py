@@ -3,8 +3,6 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.db.models import Sum
 from django.core.exceptions import PermissionDenied
-
-
 from .models import Expense, Income
 from .forms import ExpenseForm, IncomeForm
 
@@ -31,6 +29,7 @@ def index(request):
     return render(request, 'expenses/index.html', {
         'expenses': expenses,
         'total_expenses': total_expenses,
+        'total_income': total_income,
         'balance': balance
     })
 
@@ -108,10 +107,14 @@ def income_list(request):
         incomes = incomes.filter(date=date)
 
     total_income = incomes.aggregate(total=Sum('amount'))['total'] or 0
+    total_expenses = Expense.objects.filter(user=request.user).aggregate(total=Sum('amount'))['total'] or 0
+    balance = total_income - total_expenses
 
     return render(request, 'expenses/income_list.html', {
         'incomes': incomes,
         'total_income': total_income,
+        'total_expenses': total_expenses,
+        'balance': balance,
     })
 
 
@@ -158,7 +161,6 @@ def edit_income(request, income_id):
 
 
 # Delete Income
-@login_required
 @login_required
 def delete_income(request, income_id):
     income = get_object_or_404(Income, pk=income_id)
