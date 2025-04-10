@@ -166,6 +166,25 @@ We ran `flake8` across all files to ensure that our code adhered to Python’s s
 
 5. **Flake8 Results**: After addressing all critical issues, running `flake8` showed no errors and minimal warnings. The project is now PEP 8 compliant and well-organized.
 
+
+### 🔍 Lighthouse Testing
+
+**Pages Tested:**
+- Homepage (`/`)
+- Login (`/users/login/`)
+- Register (`/users/register/`)
+
+
+| Page       | Performance | Accessibility  | Best Practices | SEO |
+|----------- |-------------|----------------|----------------|-----|
+|Home/PC     | 100         | 87             | 96             | 90  |
+|Home/mob    | 100         | 87             | 93             | 90  |
+|Register/PC | 100         | 92             | 96             | 90  |
+|Register/mob| 100         | 92             | 93             | 90  |
+
+Lighthouse tests were run in Chrome DevTools. Results passed across all categories. Pages requiring authentication (e.g., `/expenses/`) were not tested due to redirect behavior.
+
+
 ---
 
 ## Bugs
@@ -211,7 +230,7 @@ Tested successfully on:
 ### 404 Page Not Found
 ![404 Error](docs/testing_screens/error_404.png)
 
-### Validation Error
+### Validation Error (W3C-css)
 ![Validation Error](docs/testing_screens/validation_error.png)
 
 ### Mobile Responsive View
@@ -219,5 +238,12 @@ Tested successfully on:
 
 ### Python (PEP8) `flake8`
 ![Mobile View - Expenses](docs/testing_screens/flake8.png)
+
+### Light house
+![Home - PC](docs/testing_screens/pc-lighthouse-home.png)
+![Home - mob](docs/testing_screens/mob-lighthouse-home.png)
+![Register - PC](docs/testing_screens/pc-lighthouse-register.png)
+![Register - mob](docs/testing_screens/mob-lighthouse-register.png)
+
 
 
