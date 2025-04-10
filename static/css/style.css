@@ -145,7 +145,7 @@ button:hover {
 }
 
 .footer {
-    background-color: black;
+    background-color: #00072D;
     color: white;
     text-align: center;
     padding: 10px 0;
@@ -156,5 +156,20 @@ button:hover {
     width: 80%; /* Match the width of your main content */
     border-radius: 5px 5px 0 0;
   }
+
+  .social-links {
+    margin-top: 8px;
+  }
+  
+  .social-links a {
+    color: white;
+    margin: 0 12px;
+    font-size: 1.4rem;
+    transition: color 0.3s ease;
+  }
+  
+  .social-links a:hover {
+    color: #007BFF;
+  }  
   
   

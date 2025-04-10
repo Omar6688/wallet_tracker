@@ -217,6 +217,12 @@ The Wallet Tracker project has a clear, user-friendly structure focused on intui
 - Deletion requires confirmation and redirects back to the list.
 - Secured with authentication to prevent unauthorized access.
 
+#### Footer and Social Links
+- A professional footer appears at the bottom of every page.
+- Includes copyright information.
+- Social media icons (Facebook, Instagram, LinkedIn) are added using Font Awesome.
+- Responsive and styled to match the overall color theme.
+
 #### Templates and Base Layout
 - Uses a `base.html` template with consistent header, messages, and styling.
 - All pages extend this base to maintain visual consistency.
