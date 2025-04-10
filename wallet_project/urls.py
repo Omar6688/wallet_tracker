@@ -23,3 +23,8 @@ urlpatterns = [
     path('expenses/', include('expenses.urls')),
     path('users/', include('users.urls')),
 ]
+
+
+handler403 = 'home.views.error_403'
+handler404 = 'home.views.error_404'
+handler500 = 'home.views.error_500'
