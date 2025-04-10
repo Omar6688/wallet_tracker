@@ -11,7 +11,7 @@ This application was developed as part of the **Code Institute Level 5 Diploma i
 
 Inspired by the need for a clean and focused money management app, Wallet Tracker gives users full CRUD functionality with secure authentication, clean UI, and dynamic balance calculations. The application is fully responsive and suitable for desktop, tablet, and mobile devices. 
 
-The app demonstrates practical usage of Django, models, forms, user authentication, filtered queries, and PostgreSQL integration. It was designed and built step-by-step with Git version control, Agile Kanban planning, Heroku deployment, and detailed testing.
+The app demonstrates practical usage of Django, models, forms, user authentication, filtered queries, and PostgreSQL integration. It was designed and built step-by-step with Visual Studio Code, Git version control, Agile Kanban planning, Heroku deployment, and detailed testing.
 
 The live site can be found here: [Live Site - Wallet Tracker](https://wallet-tracker-7acecdc627f5.herokuapp.com/)
 
@@ -87,8 +87,8 @@ User stories were written to capture the goals from the user’s perspective and
 ### User Stories
 
 - **Story 1: Register an account**
-  - *As a new user I can to create an account so that I can log in and track my income and expenses.*
-  - **Acceptance Criteria:** Registration form includes username, email, and password, confirmation message is shown after successful registration and redirect to login page.
+  - *As a new user I can create an account so that I can log in and track my income and expenses.*
+  - **Acceptance Criteria:** Registration form includes username and password, confirmation message is shown after successful registration and redirect to login page.
 
 - **Story 2: Login and logout**
   - *As a registered user I can log in and out securely so that only I can access my data*
@@ -159,7 +159,7 @@ The Wallet Tracker 💸 project was scoped to focus on delivering essential fina
 - **Summary Totals:**
   - (Optional) Totals for income, expenses, and balance visible to the user.
 - **Custom Error Pages:**
-  - Friendly 404 and 403 pages to guide users.
+  - Friendly 404, 403 and 500 pages to guide users.
 
 
   ### Features Left to Implement
