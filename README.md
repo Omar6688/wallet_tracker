@@ -157,7 +157,7 @@ The Wallet Tracker 💸 project was scoped to focus on delivering essential fina
   - Consistent navigation across the site.
   - Styled without underlines and with active link feedback.
 - **Summary Totals:**
-  - (Optional) Totals for income, expenses, and balance visible to the user.
+  - Totals for income, expenses, and balance visible to the user in both pages income and exxpenses
 - **Custom Error Pages:**
   - Friendly 404, 403 and 500 pages to guide users.
 
@@ -297,7 +297,7 @@ Wireframes were created before development to visualize the structure and user f
 
 The mockups were created using a Balsamiq-style layout and match the final UI closely, showing the header, navigation, and content containers.
 
-📸 Below is a combined wireframe image representing all three screen sizes:
+Below is a combined wireframe image representing all three screen sizes:
 
 ![Wireframe Preview](docs/readme_images/wireframes_mockup.png)
 
@@ -321,7 +321,7 @@ The Wallet Tracker app uses a PostgreSQL database with two core models:
 
 All data is user-specific, ensuring security and privacy through foreign key relationships.
 
-> 🗺️ *Entity Relationship Diagram (ERD) created using [DBDiagram](https://dbdiagram.io/).*
+> *Entity Relationship Diagram (ERD) created using [DBDiagram](https://dbdiagram.io/).*
 
 | Model   | Field        | Type         | Notes                          |
 |---------|--------------|--------------|--------------------------------|
@@ -372,10 +372,10 @@ The app uses a professional and visually appealing color palette:
 
 | Element         | Color Code  | Purpose                              |
 |-----------------|-------------|--------------------------------------|
-| Background      | `#0a192f`   | Deep navy blue for readability       |
-| Text            | `#ffffff`   | White for strong contrast            |
-| Buttons & Timer | `#ff8800`   | Orange for call-to-action elements   |
-| Borders         | `#ffffff`   | Light contrast against dark background |
+| Background      | `f7f9fc`    | Deep navy blue for readability       |
+| Text            | `000000`    | White for strong contrast            |
+| Buttons &footer | `#0077b5`   | Orange for call-to-action elements   |
+| Borders         | `#ccc`      | Light contrast against dark background |
 
 Color usage enhances UX without overwhelming the user.
 
@@ -596,9 +596,6 @@ cd wallet_tracker
 
 ## Credits
 
-- **Hero Image**  
-  The [hero image](https://www.pexels.com/photo/person-holding-us-dollar-banknotes-4386435/) used on the homepage was sourced from [Pexels](https://www.pexels.com), a free-to-use image platform.
-
 - **Wireframes**  
   Wireframes were created using [Balsamiq](https://balsamiq.com/wireframes/desktop/#) to visually plan out the layout for mobile, tablet, and desktop views.
 
@@ -625,7 +622,7 @@ cd wallet_tracker
   - [Whitenoise](http://whitenoise.evans.io/)
   - [dj-database-url](https://pypi.org/project/dj-database-url/)
   - [psycopg2](https://pypi.org/project/psycopg2/)
-  - [drawSQL](https://drawsql.app/) *(optional tool for ERD)*
+  - [DBDiagram](https://dbdiagram.io/)
   - [ChatGpt-AI](https://chatgpt.com)
 
 ---

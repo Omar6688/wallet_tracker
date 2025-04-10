@@ -44,7 +44,7 @@ This document outlines the testing process for the **Wallet Tracker** Django web
 | Test Case                        | Expected Result                              | Outcome  |
 |----------------------------------|----------------------------------------------|----------|
 | Register with valid data         | User account created and logged in           | ✅ Pass   |
-| Register with existing email     | Error message shown                          | ✅ Pass   |
+| Register with existing username  | Error message shown                          | ✅ Pass   |
 | Login with valid credentials     | User logged in and redirected                | ✅ Pass   |
 | Login with invalid credentials   | Error shown, login fails                     | ✅ Pass   |
 | Logout as logged-in user         | User logged out, redirected to login page    | ✅ Pass   |
